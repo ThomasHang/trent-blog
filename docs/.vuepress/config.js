@@ -2,17 +2,20 @@
  * @Author: 储天航 1193983801@qq.com
  * @Date: 2022-11-10 13:54:16
  * @LastEditors: 储天航 1193983801@qq.com
- * @LastEditTime: 2023-03-03 15:58:12
+ * @LastEditTime: 2023-03-06 17:41:01
  * @FilePath: \trent-blog\docs\.vuepress\config.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 
 import { defineUserConfig, defaultTheme } from "vuepress";
+// import { backToTopPlugin } from "@vuepress/plugin-back-to-top";
+// import {ss} from "vuepress-plugin-mermaidjs"
 
 module.exports = {
   title: "你好， VuePress ！",
   description: "Hello, my friend!",
   base: "/trent-blog/",
+  plugins: ["@vuepress/plugin-back-to-top", "vuepress-plugin-mermaidjs"],
   theme: defaultTheme({
     // 默认主题配置
     navbar: [
@@ -48,6 +51,7 @@ module.exports = {
         {
           children: [
             { text: "react-window虚拟渲染", link: "/work/record/react-window" },
+            { text: "redux", link: "/work/learn/redux.md" },
           ],
         },
       ],
