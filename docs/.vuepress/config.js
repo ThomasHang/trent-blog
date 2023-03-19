@@ -17,7 +17,7 @@ module.exports = {
   base: '/trent-blog/',
   plugins: [
     '@vuepress/plugin-back-to-top',
-    'vuepress-plugin-mermaidjs',
+    // 'vuepress-plugin-mermaidjs',
     '@vuepress/plugin-medium-zoom',
   ],
   theme: defaultTheme({

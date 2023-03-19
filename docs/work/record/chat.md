@@ -1,0 +1,16 @@
+<!--
+ * @Author: ThomasHang 11939838031@qq.com
+ * @Date: 2023-03-20 00:07:56
+ * @LastEditors: ThomasHang 11939838031@qq.com
+ * @LastEditTime: 2023-03-20 00:16:08
+ * @FilePath: /trent-blog/docs/work/record/chat.md
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+
+# 聊天室
+
+项目是基于 vite node socketio
+
+<!-- - [x] Task 1
+- [x] Task 2
+- [ ] Task 3 -->
