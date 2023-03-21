@@ -2,7 +2,7 @@
  * @Author: 储天航 1193983801@qq.com
  * @Date: 2022-11-10 13:54:16
  * @LastEditors: ThomasHang 11939838031@qq.com
- * @LastEditTime: 2023-03-20 01:27:41
+ * @LastEditTime: 2023-03-21 23:32:59
  * @FilePath: \trent-blog\docs\.vuepress\config.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -45,7 +45,7 @@ module.exports = {
         link: '/front/react/01.md',
       },
       {
-        text: '阅读', 
+        text: '阅读',
         link: '/read/',
       },
       // {
@@ -101,6 +101,9 @@ module.exports = {
         {
           text: 'typescript',
         },
+      ],
+      '/read/': [
+        { children: [{ text: '认识觉醒', link: '/read/renzhijuexing.md' }] },
       ],
     },
   }),
