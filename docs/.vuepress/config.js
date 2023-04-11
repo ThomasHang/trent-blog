@@ -1,52 +1,52 @@
 /*
  * @Author: 储天航 1193983801@qq.com
  * @Date: 2022-11-10 13:54:16
- * @LastEditors: ThomasHang 11939838031@qq.com
- * @LastEditTime: 2023-03-22 23:20:45
+ * @LastEditors: 储天航 1193983801@qq.com
+ * @LastEditTime: 2023-04-10 14:06:07
  * @FilePath: \trent-blog\docs\.vuepress\config.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 
-import { defineUserConfig, defaultTheme } from 'vuepress';
+import { defineUserConfig, defaultTheme } from "vuepress";
 // import { backToTopPlugin } from "@vuepress/plugin-back-to-top";
 // import {ss} from "vuepress-plugin-mermaidjs"
 
 module.exports = {
-  title: '加油， 打工人 ！',
-  description: 'Hello, my friend!',
-  base: '/trent-blog/',
+  title: "加油， 打工人 ！",
+  description: "Hello, my friend!",
+  base: "/trent-blog/",
   plugins: [
-    '@vuepress/plugin-back-to-top',
+    "@vuepress/plugin-back-to-top",
     // 'vuepress-plugin-mermaidjs',
-    '@vuepress/plugin-medium-zoom',
+    "@vuepress/plugin-medium-zoom",
   ],
   theme: defaultTheme({
     // 默认主题配置
     navbar: [
       {
-        text: '首页',
-        link: '/',
+        text: "首页",
+        link: "/",
       },
       {
-        text: '关于',
-        link: '/about/',
+        text: "关于",
+        link: "/about/",
       },
       {
-        text: '随笔',
-        link: '/essay/',
+        text: "随笔",
+        link: "/essay/",
       },
       {
-        text: '工作记录',
-        link: '/work/',
+        text: "工作记录",
+        link: "/work/",
       },
       {
-        text: '前端',
+        text: "前端",
         // link: '/front/',
-        link: '/front/react/01.md',
+        link: "/front/react/01.md",
       },
       {
-        text: '阅读',
-        link: '/read/',
+        text: "阅读",
+        link: "/read/",
       },
       // {
       //   text: 'Group',
@@ -54,56 +54,60 @@ module.exports = {
       // },
     ],
     sidebar: {
-      '/essay/': [
+      "/essay/": [
         {
           // text: '随便',
           children: [
             {
-              text: '2023年计划',
-              link: '/essay/2023_plan.md',
+              text: "2023年计划",
+              link: "/essay/2023_plan.md",
             },
           ],
         },
       ],
-      '/work/': [
+      "/work/": [
         {
           children: [
-            { text: 'react-window虚拟渲染', link: '/work/record/react-window' },
+            { text: "react-window虚拟渲染", link: "/work/record/react-window" },
+            {
+              text: "使用canvas叠加图片，实现图片合成",
+              link: "/work/record/canvas_images",
+            },
             // { text: 'redux', link: '/work/learn/redux.md' },
             // { text: '聊天室', link: '/work/record/chat.md' },
           ],
         },
       ],
-      '/front/': [
+      "/front/": [
         {
-          text: 'html',
+          text: "html",
         },
         {
-          text: 'css',
+          text: "css",
         },
         {
-          text: 'es6',
+          text: "es6",
         },
         {
-          text: 'react',
+          text: "react",
           collapsible: true,
           children: [
-            { text: '生命周期', link: '/front/react/01.md' },
-            { text: 'redux', link: '/front/react/02.md' },
+            { text: "生命周期", link: "/front/react/01.md" },
+            { text: "redux", link: "/front/react/02.md" },
           ],
         },
         {
-          text: 'vue',
+          text: "vue",
         },
         {
-          text: '前端部署',
+          text: "前端部署",
         },
         {
-          text: 'typescript',
+          text: "typescript",
         },
       ],
-      '/read/': [
-        { children: [{ text: '认识觉醒', link: '/read/renzhijuexing.md' }] },
+      "/read/": [
+        { children: [{ text: "认识觉醒", link: "/read/renzhijuexing.md" }] },
       ],
     },
   }),
