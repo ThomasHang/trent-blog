@@ -1,11 +1,12 @@
 <!--
  * @Author: 储天航 1193983801@qq.com
  * @Date: 2023-03-03 10:21:04
- * @LastEditors: ThomasHang 11939838031@qq.com
- * @LastEditTime: 2023-03-20 01:26:28
+ * @LastEditors: 储天航 1193983801@qq.com
+ * @LastEditTime: 2023-06-01 11:19:19
  * @FilePath: \trent-blog\docs\essay\index.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
+
 # 随便写写
 
 ## 写日常随笔时，可以按照以下步骤进行：
@@ -16,3 +17,4 @@
 - 注意人物刻画。如果写作中有人物，应该注意到其形象、性格、语言和行为等方面的塑造，这样可以使读者更能够深入理解角色的内心和情感。
 - 用心态度。随笔是一种个性化和自由的写作方式，应该坚持用真情和真实感受来构建文章，不一定追求形式上的完美，重在表达自己的思想和情感。
 - 需要注意的是，写随笔时不要追求过多的铺垫和行文的冗长，要表达出自己的个性和生活情趣。交流与其他人时，尽量准确地表达出自己的思想和情感，注重与读者的互动和接受。
+
