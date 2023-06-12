@@ -1,3 +1,11 @@
+<!--
+ * @Author: 储天航 1193983801@qq.com
+ * @Date: 2023-03-30 13:39:34
+ * @LastEditors: 储天航 1193983801@qq.com
+ * @LastEditTime: 2023-06-08 09:39:07
+ * @FilePath: \trent-blog\docs\work\gitlab_ci.md
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 # gitlab 注册流程
 
 ```bash
@@ -34,3 +42,13 @@ docker build -t node:groot .
 ## 配置 ssh 长连接
 
 - ssh-copy-id -i ~/.ssh/id_rsa.pub root@xxx.xx.xx.xx 配置地址
+
+
+
+``` mermaid
+sequenceDiagram
+Alice->John: Hello John, how are you?
+loop every minute
+    John-->Alice: Great!
+end
+```
