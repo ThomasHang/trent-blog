@@ -4,7 +4,7 @@ module.exports = {
   title: '加油， 打工人 ！',
   description: 'Hello, my friend!',
   base: '/trent-blog/',
-  plugins: ['@vuepress/plugin-back-to-top', '@vuepress/plugin-medium-zoom'],
+  // plugins: ['@vuepress/plugin-back-to-top', '@vuepress/plugin-medium-zoom'],
   theme: defaultTheme({
     // 默认主题配置
     navbar: [
