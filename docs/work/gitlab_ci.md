@@ -2,7 +2,7 @@
  * @Author: 储天航 1193983801@qq.com
  * @Date: 2023-03-30 13:39:34
  * @LastEditors: 储天航 1193983801@qq.com
- * @LastEditTime: 2023-07-13 14:33:22
+ * @LastEditTime: 2023-08-02 13:06:32
  * @FilePath: \trent-blog\docs\work\gitlab_ci.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -49,4 +49,10 @@ docker build -t node:groot .
 - 在gitlab ci 配置文件中加入 映射docker
 - 换成docker 镜像 然后安装node
 
+
+
+
+## gitlab-ci 中遇到ci报错，容器已经删了的情况，
+- docker run --name webgis_old -itd  enbo:RES_dev-sz-lg  
+- docker run --name 需要启动的容器名 -itd 现有的容器    
 
