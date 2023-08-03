@@ -1,5 +1,5 @@
 ---
-# title: 基础介绍
+title: 基础介绍
 # icon: module
 # date: 2019-12-26
 category: 基础
