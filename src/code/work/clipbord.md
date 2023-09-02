@@ -1,16 +1,10 @@
-<!--
- * @Author: 储天航 1193983801@qq.com
- * @Date: 2023-08-05 09:09:45
- * @LastEditors: 储天航 1193983801@qq.com
- * @LastEditTime: 2023-08-05 09:12:02
- * @FilePath: \trent-blog\src\code\work\clipbord.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
+# 把普通的div 变成可编辑
+
 handleContentChange函数用于处理当带有contentEditable属性的div元素内容发生更改时的操作。
 
 这个函数应该被绑定到div元素的onBlur和onKeyPress事件上，以确保在div元素失去焦点或用户按下回车键时进行内容的更新和保存。示例如下：
 
-::: react-demo 可选的标题文字
+::: react-demo div
 
 ```js
 import React, { useRef } from 'react';

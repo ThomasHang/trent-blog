@@ -12,8 +12,9 @@ export default hopeTheme({
     name: "Trent",
     // url: "https://mister-hope.com",
   },
+  // iconPrefix: "icon-",
 
-  iconAssets: "fontawesome-with-brands",
+  iconAssets: "//at.alicdn.com/t/c/font_4234840_ipmsr3th94a.css",
 
   logo: "/assets/icon/mine.jpg",
 
@@ -27,7 +28,7 @@ export default hopeTheme({
   // sidebar
   sidebar,
 
-  footer: "默认页脚",
+  footer: "今天也要努力呀！！！",
 
   displayFooter: true,
 
@@ -66,7 +67,7 @@ export default hopeTheme({
 
   encrypt: {
     config: {
-      "/demo/encrypt.html": ["1234"],
+      "/read/": ["nb123456?"],
     },
   },
 

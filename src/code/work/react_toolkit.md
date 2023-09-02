@@ -1,3 +1,5 @@
+# react项目中配置toolkit
+
 ```js
 
 import { configureStore } from '@reduxjs/toolkit'; // 注册 store

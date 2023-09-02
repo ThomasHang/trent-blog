@@ -1,9 +1,24 @@
-<!--
- * @Author: 储天航 1193983801@qq.com
- * @Date: 2023-08-03 17:41:11
- * @LastEditors: 储天航 1193983801@qq.com
- * @LastEditTime: 2023-08-03 17:41:25
- * @FilePath: \trent-blog\src\software\README.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
-<!-- 软件教程 -->
+---
+title: 软件教程
+icon: ruanjian
+star: 9
+sticky: 9
+---
+
+## 代码编辑器
+
+- [编辑器介绍](editor.md)
+
+## 团队协作
+
+开发项目的代码版本管理以及多人协作使用 Git 软件
+
+- [Git 教程](git/README.md)
+
+- [GitHub 介绍](../code/github/README.md)
+
+## 后端
+
+### ssh
+
+### Docker
