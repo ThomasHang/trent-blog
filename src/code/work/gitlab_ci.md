@@ -2,7 +2,7 @@
  * @Author: 储天航 1193983801@qq.com
  * @Date: 2023-08-02 15:34:23
  * @LastEditors: 储天航 1193983801@qq.com
- * @LastEditTime: 2023-08-09 16:36:48
+ * @LastEditTime: 2023-09-04 15:18:10
  * @FilePath: \trent-blog\src\work\gitlab_ci.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -40,10 +40,6 @@ cd /opt/dockerfile/groot
 docker build -t node:groot .
 ```
 
-## 配置 ssh 长连接
-
-- ssh-copy-id -i ~/.ssh/id_rsa.pub root@xxx.xx.xx.xx 配置地址
-  
 
 ## node 镜像中假如需要运行docker 命令的话
 - 在当前node 镜像中安装docker(不推荐)
