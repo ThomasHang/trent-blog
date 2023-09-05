@@ -13,7 +13,7 @@ export default sidebar({
   //   "",
   //   {
   //     text: "如何使用",
-//     icon: "laptop-code",
+  //     icon: "laptop-code",
   //     prefix: "demo/",
   //     link: "demo/",
   //     children: "structure",
@@ -39,6 +39,7 @@ export default sidebar({
         "react_window",
         "clipbord",
         "react_toolkit",
+        "浏览器",
       ],
     },
     // {
