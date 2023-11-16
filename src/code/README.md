@@ -11,4 +11,4 @@ breadcrumb: false
 
 ### 工作
 
-- [gitlab-ci](code/gitlab_ci.md)
+- [gitlab-ci](/code/work/gitlab_ci.md)

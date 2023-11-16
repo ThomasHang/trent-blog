@@ -37,13 +37,22 @@
 <script setup>
 import { ref } from "vue";
 
-const msg = ref("Hello World!");
+// const msg = ref("Hello World!");
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
-  <input v-model="msg" />
+  <div class="flex-box">
+   <div>1<div>
+   <div>2<div>
+   <div>3<div>
+   <div>4<div>
+  </div>
 </template>
+<style>
+.flex-box{
+   display:flex
+}
+</style>
 ```
 
 :::

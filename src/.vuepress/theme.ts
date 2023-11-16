@@ -16,7 +16,8 @@ export default hopeTheme({
 
   iconAssets: "//at.alicdn.com/t/c/font_4234840_ipmsr3th94a.css",
 
-  logo: "/assets/icon/mine.jpg",
+  // logo: "/assets/icon/mine.jpg",
+  logo: "/logo.svg",
 
   repo: "vuepress-theme-hope/vuepress-theme-hope",
 
@@ -33,7 +34,7 @@ export default hopeTheme({
   displayFooter: true,
 
   blog: {
-    description: "一个前端开发者",
+    description: "前端CV工程师",
     intro: "/intro.html",
     // medias: {
     //   Baidu: "https://example.com",

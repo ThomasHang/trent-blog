@@ -1,12 +1,3 @@
-<!--
- * @Author: 储天航 1193983801@qq.com
- * @Date: 2023-08-04 15:08:06
- * @LastEditors: 储天航 1193983801@qq.com
- * @LastEditTime: 2023-08-05 17:40:42
- * @FilePath: \trent-blog\src\code\javascript\basic.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
-
 # 基础
 
 ## 名词解释

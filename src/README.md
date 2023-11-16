@@ -7,8 +7,8 @@ heroImage: /logo.svg
 heroText: 𝓜𝓻. Trent
 heroFullScreen: true
 tagline: 凡是过去,皆为序章;凡是未来,皆有可期。
-# bgImage: https://file.mo7.cc/api/public/bz
-bgImage: https://www.nasachina.cn/wp-content/uploads/2023/10/WesternVeil_Wu_2974.jpg
+bgImage: https://file.mo7.cc/api/public/bz
+# bgImage: https://www.nasachina.cn/wp-content/uploads/2023/10/WesternVeil_Wu_2974.jpg
 
 # projects:
 #   - icon: project

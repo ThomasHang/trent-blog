@@ -1,17 +1,22 @@
 ---
 icon: circle-info
-cover: /assets/images/cover3.jpg
 layout: Slide
-
+title: Mr.Trent 介绍
+# icon: people
+tag:
+  - 个人介绍
+timeline: false
+star: true
 ---
 
 <!-- # 介绍页 -->
 
 @slidestart
----
-将你的个人介绍和档案放置在此处。
----
 
+## 基本信息
+
+- 性别: 男
+- 年龄: 28
+---
 
 @slideend
-

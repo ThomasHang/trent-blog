@@ -26,9 +26,9 @@ export default navbar([
         link: "",
         activeMatch: "^/software/$",
       },
-      "vscode/",
-      "git/",
-      "comsol/",
+      // "vscode/",
+      // "git/",
+      // "comsol/",
     ],
   },
   {
