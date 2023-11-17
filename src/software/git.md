@@ -46,3 +46,37 @@ tag: git
 - 命令 git tag -d `tagname` 可以删除一个本地标签；
 
 - 命令 git push origin :refs/tags/`tagname` 可以删除一个远程标签。
+
+::: react-demo React
+
+```js
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { message: "强大" };
+  }
+  handler() {
+    this.setState((state) => ({
+      message: `十分${state.message}`,
+    }));
+  }
+  render() {
+    return (
+      <div className="box">
+        <code>vuepress-theme-hope</code>
+        <span id="powerful" onClick={this.handler.bind(this)}>
+          {this.state.message}
+        </span>
+      </div>
+    );
+  }
+}
+```
+
+```css
+.box #powerful {
+  color: blue;
+}
+```
+
+:::

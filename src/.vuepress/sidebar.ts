@@ -21,6 +21,7 @@ export default sidebar({
   // ],
   "/code/": [
     "",
+    "css",
     {
       text: "工作记录",
       icon: "laptop-code",
@@ -46,13 +47,19 @@ export default sidebar({
       prefix: "language/",
       children: ["js/", "js/basic"],
     },
+    // {
+    //   text: "css",
+    //   icon: "language",
+    //   prefix: "css/",
+    //   // children: ["css/"],
+    // },
   ],
   "/software/": [
     "",
     "ssh/",
     // "vscode/",
     // "chrome",
-    // "git/",
+    "git/",
     // "comsol/",
     // {
     //   text: "工具软件",
