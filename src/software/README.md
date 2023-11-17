@@ -13,7 +13,7 @@ sticky: 9
 
 开发项目的代码版本管理以及多人协作使用 Git 软件
 
-- [Git 教程](git/README.md)
+- [Git 教程](./git.md)
 
 - [GitHub 介绍](../code/github/README.md)
 

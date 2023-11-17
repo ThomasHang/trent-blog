@@ -1,4 +1,11 @@
-# ssh 操作
+---
+date: 2023-11-17
+title: ssh 操作
+icon: install
+order: 1
+category: ssh
+tag: ssh
+---
 
 ## 配置 ssh 长连接
 
