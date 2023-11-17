@@ -9,6 +9,6 @@ breadcrumb: false
 ## 目录
 
 
-### 工作
+### 工作记录
 
 - [gitlab-ci](/code/work/gitlab_ci.md)

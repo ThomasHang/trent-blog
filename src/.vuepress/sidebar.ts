@@ -49,9 +49,9 @@ export default sidebar({
   ],
   "/software/": [
     "",
-    "editor",
-    "vscode/",
-    "chrome",
+    "ssh/",
+    // "vscode/",
+    // "chrome",
     // "git/",
     // "comsol/",
     // {
