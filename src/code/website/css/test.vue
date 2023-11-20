@@ -1,57 +1,41 @@
 <template>
- 
+    <div class="container">
+        <div v-for="item in gridArr" :key="item" class="item">{{ item }}</div>
+    </div>
+
+    <label>
+        div数量：
+        <input v-model="gridListLength" />
+    </label>
 </template>
 
 <script setup>
-import { h, ref } from 'vue'
+import { ref, watchEffect } from 'vue'
 
-const objectAtr = ref([
-    { value: "fill" },
-    { value: "contain" },
-    { value: "cover" },
-    { value: "none" },
-    { value: "scale-down" },
-])
-const selectedValue = ref('none')
+
+const gridListLength = ref("5");
+const gridArr = ref([]);
+
+// Watch for changes in gridListLength
+watchEffect(() => {
+    const length = parseInt(gridListLength.value);
+    gridArr.value = Array.from({ length }, (_, index) => index + 1);
+});
 
 
 </script>
 
 <style>
-.red-div {
-    color: red;
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
 }
 
-.img-box {
-    width: 400px;
-    /* margin:auto;
-  overflow:hidden */
-    margin: 0 auto 30px;
-
+.item {
+    background-color: #3498db;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
 }
-
-img {
-    width: 200px;
-    height: 200px;
-    border: 4px solid #ddd;
-}
-
-.label-group {
-    display: flex;
-    align-items: center;
-}
-
-.label-group label {
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 10px;
-}
-
-.line {
-    border-right: 3px solid #383a42;
-    margin: 0 5px
-}
-
-
-
 </style>
