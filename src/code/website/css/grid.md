@@ -5,11 +5,20 @@ tag: css
 
 ## 基本概念
 
-- Grid 布局是二维的排版方式，一次能控制两个方向，通过将容器分成行和列，便可定义容器内元素的位置。
-- grid-template-rows 属性：定义每一行的行高
-- grid-template-columns 属性：定义每一列的列宽
-- grid-gap: 设置网格项之间的间隙。
-- grid-template-areas: 允许通过指定命名的区域来创建布局。这可以使布局更易读和维护。
+Grid 布局是二维的排版方式，一次能控制两个方向，通过将容器分成行和列，便可定义容器内元素的位置。
+
+- 显式网格属性
+  - grid-template-rows 属性：定义每一行的行高
+  - grid-template-columns 属性：定义每一列的列宽
+- 隐式网格属性
+  - grid-auto-rows
+  - grid-auto-columns
+  - grid-auto-flow
+- 间距属性
+  - grid-column-gap
+  - grid-row-gap
+<!-- - grid-gap: 设置网格项之间的间隙。
+- grid-template-areas: 允许通过指定命名的区域来创建布局。这可以使布局更易读和维护。 -->
 
 ### repeat()函数
 
