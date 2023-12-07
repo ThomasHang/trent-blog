@@ -2,7 +2,7 @@
  * @Author: ThomasHang 11939838031@qq.com
  * @Date: 2023-11-18 19:39:48
  * @LastEditors: ThomasHang 11939838031@qq.com
- * @LastEditTime: 2023-11-19 21:14:20
+ * @LastEditTime: 2023-12-07 23:08:34
  * @FilePath: /trent-blog/src/.vuepress/sidebar.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -52,7 +52,7 @@ export default sidebar({
       text: '语言',
       icon: 'language',
       prefix: 'language/',
-      children: ['js/', 'js/basic'],
+      children: ['js/', 'js/basic', 'node/', 'node/buffer','node/fs模块'],
     },
     // "css",
     // {
@@ -64,9 +64,9 @@ export default sidebar({
   ],
   '/code/website/css/': [
     '',
-    "object/",
-    "flex/",
-    "grid/"
+    'object/',
+    'flex/',
+    'grid/',
     // {
     //   text: '快速上手',
     //   icon: 'creative',
