@@ -1,6 +1,8 @@
 # fs 模块
 
-## 文件系统
+## 一、文件写入
+
+### writeFile 异步写入
 
 - 需求：新建一个文件，座右铭.txt,写入内容，三人行,则必有我师焉
 
@@ -21,7 +23,7 @@ fs.writeFile('./座右铭.txt', '三人行,则必有我师焉', (err) => {
 
 ```
 
-## fs 模块 异步与同步
+### writeFileSync 同步写入
 
 - 同步写入
 
@@ -30,7 +32,7 @@ fs.writeFileSync('./data.txt', 'test');
 
 ```
 
-## fs 追加写入
+### appendFile/appendFileSync 追加写入
 
 1、导入 fs 模块
 2、调用 appendFile
@@ -59,7 +61,7 @@ fs.appendFile('./座右铭.txt', ',择其善者而从之,其不善者而改之',
 fs.appendFileSync('./座右铭.txt', '\r\n温故而知新,可以为师矣');
 ```
 
-# fs 流式写入
+### createWriteStream 流式写入
 
 - 需求：观书有感.txt
 
@@ -85,3 +87,38 @@ ws.close
 # 问渠那得清如许？
 # 为有源头活水来。
 ```
+
+### 写入文件的场景
+
+- 下载文件
+- 安装文件
+- 保存程序日志、如 git
+- 编辑器保存文件
+- 视频录制
+
+`当需要持久化保存数据的时候，应该想到文件写入`
+
+## 二、文件读取
+
+### readFile 异步读取
+
+fs.readFile(path,[option],callback)
+
+参数说明：
+
+- path 文件路径
+- options 选项配置
+- callback 回调函数
+
+返回值 undefind
+
+代码示例：
+
+```bash
+
+
+```
+
+### readFileSync 异步读取
+
+### createReadStream 异步读取
