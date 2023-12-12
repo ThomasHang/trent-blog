@@ -115,10 +115,162 @@ fs.readFile(path,[option],callback)
 代码示例：
 
 ```bash
+//导入模块
+const fs = require('fs');
 
+fs.readFile('./观书有感.txt', (err, data) => {
+  if (err) {
+    console.log('读取失败');
+    return;
+  }
+  console.log(data.toString())
+});
 
 ```
 
-### readFileSync 异步读取
+### readFileSync 同步读取
+
+```bash
+//导入模块
+const fs = require('fs');
+let data = fs.readFileSync(./观书有感.txt)
+console.log(data.toString())
+
+```
 
 ### createReadStream 异步读取
+
+### 读取文件的应用场景
+
+- 电脑开机
+- 程序运行
+- 编辑器打开文件
+- 查看图片
+- 播放视屏
+- 播放音乐
+- git 查看日志
+- 上传文件
+- 查看聊天记录
+
+### 文件流式读取
+
+```bash
+// 1.导入模块
+const fs = require('fs');
+
+// 2.创建读取流对象
+let rs = fs.createReadStream('./观书有感.txt');
+
+// 3.版定data事件 chunk 块儿 大块儿
+rs.on('data', (chunk) => {
+  console.log(chunk.length);
+});
+
+// 4. end可选事件
+re.on('end', () => {
+  console.log('读取完成');
+});
+
+```
+
+### 练习 复制文件
+
+文件大小 74.9MB,大文件流式效率高，小文件两个都差不多
+
+- 方式一 readFile
+
+```bash
+const fs = require('fs');
+const process= require("process")
+
+// 读取文件内容
+let data = fs.readFileSync('./观书有感.txt');
+// 写入文件
+fs.writeFileSync('./观书有感_2.txt',data);
+console.log(process.memoryUsage()) // 消耗内存 100.57MB
+
+```
+
+- 方式二 流式操作
+
+```bash
+const fs = require('fs');
+const process= require("process")
+let rs = fs.createReadStream('./观书有感.txt');
+// 创建写入流
+const ws = fs.createWriteStream('./观书有感_3.txt', rs);
+// 绑定data事件
+rs.on('data', (chunk) => {
+  console.log(chunk.length);
+  ws.write(chunk);
+});
+console.log(process.memoryUsage()) // 消耗内存 39.05MB
+
+//快速实现复制
+re.pipe(ws)
+```
+
+## 三、文件重命名与移动
+
+在 Node.js 中，我们可以使用`rename`或`renameSync`来移动或重命名`文件或文件夹`
+语法：
+fs.rename(oldPath,newPath,callback)
+fs.renameSync(oldPath,newPath)
+
+参数说明:
+
+- oldPath 文件当前的路径
+- newPath 文件新的路径
+- callback 操作后的回调
+
+代码示例：
+
+```bash
+const fs = require('fs');
+fs.rename('./观书有感.txt', './观书有感呀.txt', (err) => {
+  if (err) throw err;
+  console.log("移动完成")
+});
+```
+
+## 四、文件删除
+
+在 Node.js 中，我们可以使用`unlink`或`unlinkSync`来删除文件
+
+语法：
+fs.unlink(path,callback)
+fs.unlinkSync(path)
+
+参数说明:
+
+- path 文件路径
+- callback 操作后的回调
+
+代码示例：
+
+```bash
+const fs = require('fs');
+fs.unlink('./观书有感呀.txt', (err) => {
+  if (err) throw err;
+  console.log("删除成功")
+});
+
+//调用rm方法 14.4 rmSync
+fs.rm('./观书有感呀.txt', (err) => {
+  if (err) throw err;
+  console.log("删除成功")
+});
+```
+
+## 五、文件夹操作
+
+在 Node.js 中，我们可以使用`mkdir`或`mkdirSync`来创建文件夹
+
+
+## 六、查看资源状态
+
+## 七、相对路径问题
+
+## 八、_dirname
+
+## 九、练习
