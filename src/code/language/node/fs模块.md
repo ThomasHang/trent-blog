@@ -266,11 +266,115 @@ fs.rm('./观书有感呀.txt', (err) => {
 
 在 Node.js 中，我们可以使用`mkdir`或`mkdirSync`来创建文件夹
 
+语法：
+fs.mkdir(path,callback)
+fs.mkdirSync(path)
+
+参数说明:
+
+- path 文件夹路径
+- options 选项配置(可选)
+- callback 操作后的回调
+
+代码示例：
+
+```bash
+const fs =require("fs")
+fs.mkdir("./test",err=>{
+    if(err){
+        console.log("创建失败")
+        return
+    }
+    console.log("创建成功")
+})
+
+// 递归创建
+fs.mkdir('./a/b/c', {recursive:true},(err) => {
+  if (err) {
+    console.log('创建失败');
+    return;
+  }
+  console.log("创建成功")
+})
+
+// 读取文件夹
+fs.readdir('./test', (err,data) => {
+  if (err) {
+    console.log('读取失败');
+    return;
+  }
+  console.log('读取成功');
+  console.log(data,"sss")
+});
+
+// 删除文件夹
+fs.rmdir('./test', { recursive: true }, (err) => {
+  if (err) {
+    console.log(err, 'sss');
+    console.log('删除失败');
+    return;
+  }
+  console.log('删除成功');
+});
+
+// 推荐使用rm
+fs.rm('./a', { recursive: true }, (err) => {
+    if (err) {
+      console.log(err, 'sss');
+      console.log('删除失败');
+      return;
+    }
+    console.log('删除成功');
+  });
+
+```
 
 ## 六、查看资源状态
 
-## 七、相对路径问题
+在 Node.js 中，我们可以使用`stat`或`statSync`来创建文件夹
 
-## 八、_dirname
+语法：
+fs.stat(path[,options],callback)
+fs.mkdirSync(path[,options])
+
+参数说明:
+
+- path 文件夹路径
+- options 选项配置(可选)
+- callback 操作后的回调
+
+代码示例：
+
+```bash
+const fs = require('fs');
+fs.stat('./2021-05.pdf', (err, data) => {
+  if (err) {
+    console.log('操作失败');
+    return;
+  }
+  console.log('操作成功');
+
+  console.log(data);
+// 检测是否是文件
+  console.log(data.isFile());
+// 检测是否是文件夹
+  console.log(data.isDirectory());
+
+});
+
+```
+
+## 七、相对路径问题
+- 相对路径
+  - `./座右铭.txt`当前目录下的座右铭.txt 
+  - `座右铭.txt` 等效于上面的写法
+  - `../座右铭.txt` 当前目录的上一级目录的座右铭.txt
+- 相对路径
+  -  `D:/Program Files` windows系统下的绝对路径
+  -  `/usr/bin` Linx系统下的绝对路径
+
+## 八、 __dirname
 
 ## 九、练习
+
+批量改名
