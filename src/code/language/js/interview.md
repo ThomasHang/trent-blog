@@ -1,6 +1,6 @@
 ---
 title: 面试题
-tag: work
+tag: js
 ---
 
 1. var let const 的区别？
@@ -84,3 +84,20 @@ function example() {
   console.log(y); // ReferenceError: y is not defined
 }
 ```
+
+4. js 数据类型
+   数据类型分为两类：原始数据类型和引用数据类型。
+
+- 原始数据类型：
+  字符串（String）：用于表示文本数据，例如 "hello"。
+  数字（Number）：用于表示数值，可以是整数或浮点数，例如 10 或 3.14。
+  布尔值（Boolean）：用于表示 true 或 false。
+  undefined：表示一个未定义的值，通常在声明变量但未初始化时使用。
+  null：表示空值或不存在的值。
+  Symbol：在 ES6 中引入的一种数据类型，表示唯一的值。
+- 引用数据类型：
+  对象（Object）：用于存储多个值的集合，可以是键值对的集合，也可以是函数等。
+  数组（Array）：特殊的对象，用于存储按顺序排列的值的集合。
+  函数（Function）：也是对象的一种，用于执行特定任务的代码块。
+
+
