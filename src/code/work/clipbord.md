@@ -1,4 +1,4 @@
-# 把普通的div 变成可编辑
+# 可编辑 div
 
 handleContentChange函数用于处理当带有contentEditable属性的div元素内容发生更改时的操作。
 

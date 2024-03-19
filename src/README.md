@@ -4,7 +4,8 @@ layout: BlogHome
 icon: home
 title: 博客主页
 heroImage: /logo.svg
-heroText: 𝓜𝓻. Trent
+heroText: Mr. Trent
+# heroText: 𝓜𝓻. Trent
 heroFullScreen: true
 # tagline: 凡是过去,皆为序章;凡是未来,皆有可期。
 tagline: 人间万千光景，苦乐喜忧，跌撞起伏，除了自渡，他人爱莫能助。

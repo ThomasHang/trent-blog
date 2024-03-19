@@ -1,4 +1,4 @@
-# gitlab 注册流程
+# gitlab 配置
 
 ```bash
 # 进入容器

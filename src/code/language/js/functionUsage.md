@@ -10,4 +10,5 @@ tag: js
 - parseInt()
 
 - parseFloat()
+  
 - toString()

@@ -1,4 +1,4 @@
-# flex 和 grid 布局
+# flex、grid 布局
 
 ### Flexbox：
 
