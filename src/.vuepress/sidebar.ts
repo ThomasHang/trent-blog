@@ -6,7 +6,7 @@
  * @FilePath: /trent-blog/src/.vuepress/sidebar.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
-import { sidebar } from 'vuepress-theme-hope';
+import { sidebar } from "vuepress-theme-hope";
 
 export default sidebar({
   // "/": [
@@ -27,21 +27,23 @@ export default sidebar({
   //   "intro",
   //   "slides",
   // ],
-  '/code/': [
-    '',
+  "/code/": [
+    "",
     {
-      text: '工作记录',
-      icon: 'laptop-code',
-      prefix: 'work/',
+      text: "工作记录",
+      icon: "laptop-code",
+      prefix: "work/",
       children: [
         // "work",
-        'gitlab_ci',
-        'react_window',
-        'clipbord',
-        'react_toolkit',
-        '浏览器',
-        'flex和grid布局',
-        'shortcut',
+        "gitlab_ci",
+        "react_window",
+        "clipbord",
+        "react_toolkit",
+        "浏览器",
+        "flex和grid布局",
+        "shortcut",
+        "前端网页打开电脑exe应用",
+        "antd3自定义表单",
       ],
     },
     // {
@@ -50,17 +52,17 @@ export default sidebar({
     //   children: [],
     // },
     {
-      text: '语言',
-      icon: 'language',
-      prefix: 'language/',
+      text: "语言",
+      icon: "language",
+      prefix: "language/",
       children: [
-        'js/',
-        'js/basic',
-        'js/interview',
-        'js/promise',
-        'node/',
-        'node/buffer',
-        'node/fs模块',
+        "js/",
+        "js/basic",
+        "js/interview",
+        "js/promise",
+        "node/",
+        "node/buffer",
+        "node/fs模块",
       ],
     },
     // "css",
@@ -71,11 +73,11 @@ export default sidebar({
     //   children: ["object"],
     // },
   ],
-  '/code/website/css/': [
-    '',
-    'object/',
-    'flex/',
-    'grid/',
+  "/code/website/css/": [
+    "",
+    "object/",
+    "flex/",
+    "grid/",
     // {
     //   text: '快速上手',
     //   icon: 'creative',
@@ -92,12 +94,12 @@ export default sidebar({
     //   ],
     // },
   ],
-  '/software/': [
-    '',
-    'ssh/',
+  "/software/": [
+    "",
+    "ssh/",
     // "vscode/",
     // "chrome",
-    'git/',
+    "git/",
     // "comsol/",
     // {
     //   text: "工具软件",
