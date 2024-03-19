@@ -58,7 +58,7 @@ docker build -t node:groot .
 ## 自定义 sh 安装和打包文件
 
 1. 可以选择一步步敲命令
-2. 也可以把下面的命令保存到一个.sh结尾的脚本里，然后sh xxx.sh 运行该文件
+2. 也可以把下面的命令保存到一个.sh 结尾的脚本里，然后 sh xxx.sh 运行该文件
 
 ::: code-tabs#shell
 
@@ -81,3 +81,128 @@ docker save -o /opt/server/docker_front/enbo-res/(自定义名称).tar enbo:late
 ```
 
 :::
+
+## 目前项目中实现了代码推送通知 打包 部署 部署路径通知
+
+```yml
+image: node:groot
+
+variables:
+  pro_upload_path: /mnt/enbo-groot/
+  images: $CI_COMMIT_REF_NAME
+  author: $CI_COMMIT_AUTHOR
+  message: $CI_COMMIT_MESSAGE
+  description: $CI_COMMIT_DESCRIPTION
+
+stages:
+  - notify-update
+  - build
+  - deploy
+  - notifiy
+
+cache:
+  paths:
+    - node_modules/
+    - ~/.cache/yarn
+notify_info:
+  stage: notify-update
+  script:
+    - 'curl -H "Content-type: application/json" -d "{\"msgtype\":\"markdown\", \"markdown\": {\"title\":\"代码推送提醒\", \"text\":\"资源管理平台\n > ${author} push to $CI_COMMIT_BRANCH\n > ${message} ${description}\"}}" "https://oapi.dingtalk.com/robot/send?access_token=${dingding_token}"'
+
+deploy_to_build:
+  stage: build
+  only:
+    - tags
+    - develop
+    - test
+    - feature-docker
+  script:
+    - yarn
+
+# 正式环境部署
+deploy_to_master:
+  stage: deploy
+  only:
+    - tags
+  script:
+    - cd src/utils/
+    - nameVersion=$(echo $CI_COMMIT_SHA | cut -c1-6)
+    - sed -i "1s~.*~const commitVersion=\"$nameVersion\"~" index.js
+    - cd ..
+    - cd ..
+
+    - CI=false npm run build
+    - mkdir no_web
+    - mkdir has_web
+    - cp -r build/* no_web
+    - cp -r build/* has_web
+    - rm -rf no_web/web
+    - rm -rf build
+    - mkdir $images
+    - mv has_web $images
+    - mv no_web $images
+    - tar -czvf $images.tar.gz $images
+    - cp -r $images.tar.gz $pro_upload_path
+
+# local环境部署
+deploy_to_dev_server:
+  stage: deploy
+  script:
+    - cd src/utils/
+    - nameVersion=$(echo $CI_COMMIT_SHA | cut -c1-6)
+    - sed -i "1s~.*~const commitVersion=\"$nameVersion\"~" index.js
+    - cd ..
+    - cd ..
+
+    - export PROJECT_VERSION=$(node -pe "require('./package.json').version")
+    - CI=false npm run build
+    - scp -o StrictHostKeyChecking=no -r ./build root@$dev_host:/opt/server/docker_front/enbo-res
+    - ssh -o StrictHostKeyChecking=no root@$dev_host "cd /opt/server/docker_front/enbo-res&&rm -rf enbo && mv build enbo && docker stop enboweb && docker rm enboweb && docker build -t enbo:$PROJECT_VERSION .&& docker run --name enboweb -p 9083:80 -itd enbo:$PROJECT_VERSION"
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "develop"'
+      when: on_success
+
+# test环境部署
+deploy_to_test_server:
+  stage: deploy
+  script:
+    - cd src/utils/
+    - nameVersion=$(echo $CI_COMMIT_SHA | cut -c1-6)
+    - sed -i "1s~.*~const commitVersion=\"$nameVersion\"~" index.js
+    - cd ..
+    - cd ..
+
+    - export PROJECT_VERSION=$(node -pe "require('./package.json').version")
+    - CI=false npm run build
+    - scp -o StrictHostKeyChecking=no -r ./build root@$test_host:/opt/server/docker_front/enbo-res
+    - ssh -o StrictHostKeyChecking=no root@$test_host "cd /opt/server/docker_front/enbo-res&&rm -rf enbo && mv build enbo && docker stop enboweb && docker rm enboweb && docker build -t enbo:$PROJECT_VERSION .&& docker run --name enboweb -p 9083:80 -itd enbo:$PROJECT_VERSION"
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "test"'
+      when: on_success
+
+# 正式环境通知
+deploy_to_notifiy:
+  stage: notifiy
+  only:
+    - tags
+  script:
+    - 'curl -H ''Content-type: application/json'' -d ''{"msgtype":"text", "text": {"content":"资源管理平台正式包已更新完成,请前往该路径\\\\192.168.1.6\\enbo\\项目发布包\\资源管理平台\\gis-主分支"}}'' https://oapi.dingtalk.com/robot/send?access_token=$dingding_token'
+
+# local环境通知
+deploy_to_dev_notifiy:
+  stage: notifiy
+  script:
+    - 'curl -H ''Content-type: application/json'' -d ''{"msgtype":"text", "text": {"content":"资源管理平台local已更新"}}'' https://oapi.dingtalk.com/robot/send?access_token=$dingding_token'
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "develop"'
+      when: on_success
+
+# test环境通知
+deploy_to_test_notifiy:
+  stage: notifiy
+  script:
+    - 'curl -H ''Content-type: application/json'' -d ''{"msgtype":"text", "text": {"content":"资源管理平台test已更新"}}'' https://oapi.dingtalk.com/robot/send?access_token=$dingding_token'
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "test"'
+      when: on_success
+```

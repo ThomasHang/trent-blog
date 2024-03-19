@@ -38,13 +38,25 @@ class MyPromise {
     this.onResolvedCallbacks = [];
     // 用于保存失败回调函数列表
     this.onRejectedCallbacks = [];
+
+     const resolve = (value) => {
+    if (this.state === "pending") {
+      this.state = "fulfilled";
+      this.value = value;
+      this.onResolvedCallbacks.forEach((callback) => callback());
+    }
+  }
+  reject(reason) {
+    if (this.state === "pending") {
+      this.state = "rejected";
+      this.reason = reason;
+      this.onRejectedCallbacks.forEach((callback) => callback());
+    }
+  }
   }
 
-  const resolve = (value)=>{
-   if(this.state==="pending"){
-    this.state="fulfilled"
-   }
-  }
+
+  all() {}
 }
 ```
 
