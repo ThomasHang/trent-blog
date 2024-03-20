@@ -44,6 +44,7 @@ export default sidebar({
         "shortcut",
         "前端网页打开电脑exe应用",
         "antd3自定义表单",
+        "js面试题",
       ],
     },
     // {
