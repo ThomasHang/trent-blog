@@ -55,7 +55,8 @@ export default sidebar({
       text: '面试记录',
       prefix: 'interview/',
       children:[
-        "面试总结"
+        "面试总结",
+        "面试自我介绍"
       ]
     },
     {
