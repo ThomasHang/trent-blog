@@ -1,4 +1,9 @@
-# gitlab 配置
+---
+date: 2024-09-25
+title: gitlab ci 配置
+tag: gitlab
+# icon: git
+---
 
 ```bash
 # 进入容器
