@@ -1,9 +1,9 @@
 ---
-title: 笔记
+title: 代码笔记
 icon: code
 star: true
 sticky: 20
-breadcrumb: false
+next: ./work/
 ---
 
 ## 目录

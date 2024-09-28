@@ -1,4 +1,8 @@
-# checkbox数量多全选引起卡顿
+---
+date: 2023-03-08
+title: antd checkbox数量过多优化卡顿
+---
+
 
 ## 前言
 
@@ -15,10 +19,10 @@ react-window 是热门的虚拟滚动库。提供了多种可复用的组件，�
 
 2. memoized:
    概念：使用一组参数初次调用函数时，缓存参数和计算结果，当再次使用相同的参数调用该函数时，直接返回相应的缓存结果。
-3. [Set](https://es6.ruanyifeng.com/#docs/set-map#Set)概念：它类似于数组，但是成员的值都是唯一的，没有重复的值。这次用到了set的 
+3. [Set](https://es6.ruanyifeng.com/#docs/set-map#Set)概念：它类似于数组，但是成员的值都是唯一的，没有重复的值。这次用到了 set 的
    - add()：添加某个值，返回 Set 结构本身。
    - delete()：删除某个值，返回一个布尔值，表示删除是否成功。
-   - has()：返回一个布尔值，表示该值是否为Set的成员。
+   - has()：返回一个布尔值，表示该值是否为 Set 的成员。
 
 ### 实现
 
@@ -38,14 +42,14 @@ const VirtualCheckboxList = ({
   checkedList, // 当前选中的值，默认值
   style, //定义的样式
 }) => {
-// 定义了一个状态钩子checkedItems，并设置默认值为空集合new Set()，用于表示当前选中的复选框。
+  // 定义了一个状态钩子checkedItems，并设置默认值为空集合new Set()，用于表示当前选中的复选框。
   const [checkedItems, setCheckedItems] = useState(new Set());
 
-/**
- * 定义一个回调函数 处理当复选框被选中或取消选中时的逻辑
- * 使用了new Set()和delete()和add()方法来添加或删除选中的复选框
- * 并通过setCheckedItems方法来更新checkedItems状态
- */
+  /**
+   * 定义一个回调函数 处理当复选框被选中或取消选中时的逻辑
+   * 使用了new Set()和delete()和add()方法来添加或删除选中的复选框
+   * 并通过setCheckedItems方法来更新checkedItems状态
+   */
   const handleCheckboxChange = useCallback(
     (id) => {
       const newCheckedItems = new Set(checkedItems);
@@ -55,24 +59,24 @@ const VirtualCheckboxList = ({
         newCheckedItems.add(id);
       }
       setCheckedItems(newCheckedItems);
-      onChange([...newCheckedItems]); 
+      onChange([...newCheckedItems]);
     },
     [checkedItems, onChange]
   );
 
-/**
- * 监听 checkedList属性变化时，更新checkedItems 状态
- */
+  /**
+   * 监听 checkedList属性变化时，更新checkedItems 状态
+   */
   useEffect(() => {
     setCheckedItems(new Set(checkedList));
   }, [checkedList]);
 
-/**
- * 获取data[index]中包含的每个复选框对象
- * 根据checkedItems中的值来判断复选框是否被选中
- * 并将每个复选框和其对应的标签渲染到Checkbox组件中
- * 
- */
+  /**
+   * 获取data[index]中包含的每个复选框对象
+   * 根据checkedItems中的值来判断复选框是否被选中
+   * 并将每个复选框和其对应的标签渲染到Checkbox组件中
+   *
+   */
   const handleRenderRow = useCallback(
     ({ index, style }) => {
       const item = data[index];
@@ -113,13 +117,13 @@ const VirtualCheckboxList = ({
 export default VirtualCheckboxList;
 ```
 
-- 使用useCallback 效果
-![virtuallist01.gif](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5e3ef16f2cea4de5b9e720a43731a213~tplv-k3u1fbpfcp-watermark.image?)
+- 使用 useCallback 效果
+  ![virtuallist01.gif](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5e3ef16f2cea4de5b9e720a43731a213~tplv-k3u1fbpfcp-watermark.image?)
 - 未使用
-![virtuallist03.gif](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8b6a26f1b8014dbb838a17a86c012d07~tplv-k3u1fbpfcp-watermark.image?)
+  ![virtuallist03.gif](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8b6a26f1b8014dbb838a17a86c012d07~tplv-k3u1fbpfcp-watermark.image?)
 
 ### 结语
-核心还是，组件如何进行性能优化，阻止不必要的render。
 
+核心还是，组件如何进行性能优化，阻止不必要的 render。
 
 ### 项目地址：[codesandbox](https://codesandbox.io/s/virtuallist-srjl5w)

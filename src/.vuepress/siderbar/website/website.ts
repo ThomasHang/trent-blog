@@ -4,4 +4,5 @@ export const website = arraySidebar([
   "",
   "html/",
   "css/",
+  "javascript/",
 ]);
