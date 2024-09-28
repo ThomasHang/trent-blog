@@ -1,6 +1,5 @@
 ---
 icon: circle-info
-layout: Slide
 title: Mr.Trent 介绍
 # icon: people
 tag:
@@ -14,6 +13,7 @@ star: true
 @slidestart
 
 ## 基本信息
+sss
 
 - 性别: 男
 - 年龄: 28
