@@ -9,4 +9,5 @@ export const software = arraySidebar([
     'git/',
     'comsol/',
     'tool/',
+    'react/',
 ])
