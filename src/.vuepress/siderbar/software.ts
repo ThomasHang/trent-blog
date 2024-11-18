@@ -2,12 +2,12 @@ import { arraySidebar } from "vuepress-theme-hope";
 
 export const software = arraySidebar([
     '',
-    'ssh/',
+    // 'ssh/',
+    // 'vscode/',
+    // 'chrome',
+    // 'git/',
+    // 'comsol/',
+    // 'tool/',
     'gitlab_ci',
-    'vscode/',
-    'chrome',
-    'git/',
-    'comsol/',
-    'tool/',
     'react/',
 ])
