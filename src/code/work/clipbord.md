@@ -1,49 +1,81 @@
-# 可编辑 div
+# 可编辑的 `div`
 
-handleContentChange函数用于处理当带有contentEditable属性的div元素内容发生更改时的操作。
+`handleContentChange` 函数用于处理带有 `contentEditable` 属性的 `div` 元素内容发生更改时的操作，通常包括更新和保存用户编辑的内容。
 
-这个函数应该被绑定到div元素的onBlur和onKeyPress事件上，以确保在div元素失去焦点或用户按下回车键时进行内容的更新和保存。示例如下：
+此函数应绑定到 `div` 元素的 `onBlur` 和 `onKeyPress` 事件，以确保在元素失去焦点或用户按下回车键时触发内容保存逻辑。
 
-::: react-demo div
+---
 
-```js
-import React, { useRef } from 'react';
+### 示例代码
+
+以下是一个示例，通过 `React` 实现一个可编辑的 `div`：
+
+::: react-demo 可编辑的 div
+
+```jsx
+import React, { useRef } from "react";
 
 function MyComponent() {
   const myDiv = useRef(null);
 
+  // 处理内容更改并保存
   const handleContentChange = () => {
-    const content = myDiv.current.innerHTML;
-    const images = myDiv.current.getElementsByTagName('img');
+    const content = myDiv.current.innerHTML; // 获取当前内容
+    const images = Array.from(myDiv.current.getElementsByTagName("img")).map(
+      (img) => img.src // 提取所有图片的路径
+    );
 
-    fetch('http://example.com/api', {
-      method: 'POST',
+    // 向服务器发送内容和图片数据
+    fetch("http://example.com/api", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({ content, images }),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error(error));
+      .then((data) => console.log("数据保存成功：", data))
+      .catch((error) => console.error("保存失败：", error));
   };
 
   return (
     <div
       ref={myDiv}
-      contentEditable={true}
-      onBlur={handleContentChange}
+      contentEditable={true} // 启用可编辑属性
+      onBlur={handleContentChange} // 失去焦点时触发保存
       onKeyPress={(event) => {
-        if (event.key === 'Enter') {
-          event.preventDefault(); // 防止在div元素中按下回车键时自动换行
-          myDiv.current.blur(); // 使div元素失去焦点，触发handleContentChange函数
+        if (event.key === "Enter") {
+          event.preventDefault(); // 阻止回车键的默认行为（换行）
+          myDiv.current.blur(); // 失去焦点，触发 `onBlur` 保存内容
         }
       }}
+      style={{
+        border: "1px solid #ccc",
+        padding: "10px",
+        minHeight: "50px",
+        borderRadius: "4px",
+        outline: "none",
+      }}
     >
-      <p>这是一个可编辑的div元素。</p>
+      <p>这是一个可编辑的 `div` 元素。</p>
       <img src="/path/to/image1.jpg" alt="Image 1" />
       <img src="/path/to/image2.jpg" alt="Image 2" />
     </div>
   );
 }
+
+export default MyComponent;
 ```
+
 :::
 
-在这个示例中，handleContentChange函数绑定到了onBlur事件上，以处理div元素失去焦点时内容的更新和保存。onKeyPress事件绑定了一个匿名函数，以在用户按下回车键时防止自动换行，并调用blur()使div元素失去焦点，以触发handleContentChange函数。
+### 功能说明
+
+1. 内容更新
+   - 当用户编辑 div 内容并失去焦点时，handleContentChange 会获取 innerHTML，以及所有嵌入图片的路径，并将数据发送到服务器。
+
+2.回车键处理
+
+-默认情况下，在 contentEditable 元素中按下回车键会插入新行。 -通过阻止默认行为并调用 blur()，可以模拟回车键作为保存操作。
+
+3.样式支持 -为了更好的用户体验，可以添加边框和适当的间距等样式，使编辑区域清晰可见。

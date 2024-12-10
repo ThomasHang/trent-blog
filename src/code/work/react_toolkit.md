@@ -1,121 +1,103 @@
-# react 项目中配置 toolkit
+# 在 react 项目中配置 toolkit
+
+Redux Toolkit 是官方推荐的 Redux 状态管理工具，简化了 Redux 的配置过程，提供了更易用的开发工具和默认中间件。
+
+---
+
+## 配置 `Store`
+
+使用 `configureStore` 创建 Redux 的 `store`：
 
 ```js
-
-import { configureStore } from '@reduxjs/toolkit'; // 注册 store
-import counterReducer from '../features/counter/counterSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import counterReducer from "../features/counter/counterSlice";
 
 export default configureStore({
   reducer: {
     counter: counterReducer,
   },
 });
-// The store has been created with these options:
-// - reducer对象里的所有属性会经 combineReducers()合成
-// - redux-thunk 和 redux-logger 被添加到中间件里
-// - Redux DevTools 拓展插件在生产模式下会自动屏蔽
-// - 中间件、reduxBatch还有 Chrome 开发者工具增强器会自动组合到一起
-/features/counter/counterSlice.js
 ```
 
-### Redux Toolkit 在它的 reducer 内部使用了 Immer
+### `configureStore` 的特点：
+
+- 自动调用 `combineReducers()` 合并多个 reducer。
+- 默认集成 `redux-thunk` 和开发工具插件，生产环境下自动屏蔽开发工具。
+- 可轻松扩展中间件和增强器。
+
+## 创建 `Slice`
+
+使用 `createSlice` 创建一个 `slice`，它包含了 reducer 和 action。
 
 ```js
 import { createSlice } from "@reduxjs/toolkit";
 
 export const counterSlice = createSlice({
   name: "counter",
-  initialState: {
-    value: 0,
-  },
+  initialState: { value: 0 },
   reducers: {
     increment: (state) => {
-      // Redux Toolkit 内部使用了 Immer库，所以可以直接对 state上的进行修改
-      // Immer 是一个采用 COW(写入时复制)策略的库，此时更改的只是 state 的临时副本
-      // 只有当mutation真正完成时，才会生成一个新的 state。
-      state.value += 1;
+      state.value += 1; // 内部使用 Immer，允许直接修改 state
     },
     decrement: (state) => {
       state.value -= 1;
     },
     incrementByAmount: (state, action) => {
-      state.value += action.payload;
+      state.value += action.payload; // payload 为传入的参数
     },
   },
 });
 
 export const { increment, decrement, incrementByAmount } = counterSlice.actions;
 
-// 这个是异步函数的编写示例，基于 redux-thunk，
-// 在函数内部可以进行异步操作，在异步完成后可以触发 action
-// 类似 Vuex 里面的进行异步操作的 action
+// 异步操作示例（redux-thunk）
 export const incrementAsync = (amount) => (dispatch) => {
   setTimeout(() => {
     dispatch(incrementByAmount(amount));
   }, 1000);
 };
 
-// 类似 Vuex 里面的 mapGetters
-// 用于从 state 里面抽取特定的字段，或者做数据过滤
-// 可以写在业务代码，不一定要写在当前的文件里
-export const selectCount = (state) => {
-  return state.counter.value;
-};
+// 从 state 中提取值
+export const selectCount = (state) => state.counter.value;
 
 export default counterSlice.reducer;
 ```
 
-### Hook 组件怎么调用
+## 在 Hook 组件中使用
 
-::: code-tabs#shell
-@tab react
+`useSelector` 和 `useDispatch` 是 React-Redux 提供的 Hook，用于访问状态和分发操作。
 
-```react
+### 示例代码：
 
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+```js
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
-  decrement,
   increment,
+  decrement,
   incrementByAmount,
   incrementAsync,
   selectCount,
-} from './counterSlice';
-import styles from './Counter.module.css';
+} from "./counterSlice";
 
 export function Counter() {
-  const count = useSelector(selectCount);
-  const dispatch = useDispatch();
-  const [incrementAmount, setIncrementAmount] = useState('2');
+  const count = useSelector(selectCount); // 从 Redux store 中获取值
+  const dispatch = useDispatch(); // 获取 dispatch 方法
+  const [incrementAmount, setIncrementAmount] = useState("2");
 
   return (
     <div>
-      <div className={styles.row}>
-        <button
-          className={styles.button}
-          aria-label="Increment value"
-          onClick={() => dispatch(increment())}
-        >
-          +
-        </button>
-        <span className={styles.value}>{count}</span>
-        <button
-          className={styles.button}
-          aria-label="Decrement value"
-          onClick={() => dispatch(decrement())}
-        >
-          -
-        </button>
+      <div>
+        <button onClick={() => dispatch(increment())}>+</button>
+        <span>{count}</span>
+        <button onClick={() => dispatch(decrement())}>-</button>
       </div>
-      <div className={styles.row}>
+      <div>
         <input
-          className={styles.textbox}
-          aria-label="Set increment amount"
           value={incrementAmount}
-          onChange={e => setIncrementAmount(e.target.value)}
+          onChange={(e) => setIncrementAmount(e.target.value)}
         />
         <button
-          className={styles.button}
           onClick={() =>
             dispatch(incrementByAmount(Number(incrementAmount) || 0))
           }
@@ -123,7 +105,6 @@ export function Counter() {
           Add Amount
         </button>
         <button
-          className={styles.asyncButton}
           onClick={() => dispatch(incrementAsync(Number(incrementAmount) || 0))}
         >
           Add Async
@@ -132,78 +113,57 @@ export function Counter() {
     </div>
   );
 }
-
 ```
 
-:::
+## 在 Class 组件中使用
 
-### Class Component 如何调用
+`connect` 函数可以将 Redux 状态和分发方法映射到组件的 props。
+
+### 示例代码：
 
 ```js
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import {
-  decrement,
   increment,
+  decrement,
   incrementByAmount,
   incrementAsync,
 } from "./counterSlice";
-import { connect } from "react-redux";
-import styles from "./Counter.module.css";
 
 class CounterClassComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      incrementAmount: 2,
-    };
+    this.state = { incrementAmount: 2 };
   }
 
   setIncrementAmount(num) {
-    this.setState({
-      incrementAmount: +num,
-    });
+    this.setState({ incrementAmount: +num });
   }
 
   render() {
     const { incrementAmount } = this.state;
     const { count, increment, decrement, incrementByAmount, incrementAsync } =
       this.props;
+
     return (
       <div>
-        <div className={styles.row}>
-          <button
-            className={styles.button}
-            aria-label="Increment value"
-            onClick={() => increment()}
-          >
-            +
-          </button>
-          <span className={styles.value}>{count}</span>
-          <button
-            className={styles.button}
-            aria-label="Decrement value"
-            onClick={() => decrement()}
-          >
-            -
-          </button>
+        <div>
+          <button onClick={() => increment()}>+</button>
+          <span>{count}</span>
+          <button onClick={() => decrement()}>-</button>
         </div>
-        <div className={styles.row}>
+        <div>
           <input
-            className={styles.textbox}
-            aria-label="Set increment amount"
             value={incrementAmount}
             onChange={(e) => this.setIncrementAmount(e.target.value)}
           />
           <button
-            className={styles.button}
             onClick={() => incrementByAmount(Number(incrementAmount) || 0)}
           >
             Add Amount
           </button>
-          <button
-            className={styles.asyncButton}
-            onClick={() => incrementAsync(Number(incrementAmount) || 0)}
-          >
+          <button onClick={() => incrementAsync(Number(incrementAmount) || 0)}>
             Add Async
           </button>
         </div>
@@ -212,29 +172,22 @@ class CounterClassComponent extends Component {
   }
 }
 
-// 类似 Vuex 中的 mapGetters
-const mapStateToProps = (state) => {
-  const { value } = state.counter;
-  return {
-    count: value,
-  };
-};
+// 将 Redux 状态映射到 props
+const mapStateToProps = (state) => ({
+  count: state.counter.value,
+});
 
-// 类似 Vuex中的 mapActions 以及 mapMuatations
-const mapDispatchToProps = () => {
-  return {
-    decrement: () => decrement(),
-    increment: () => increment(),
-    incrementByAmount: (payload) => incrementByAmount(payload),
-    incrementAsync: (payload) => incrementAsync(payload),
-  };
-};
+// 将 Redux action 映射到 props
+const mapDispatchToProps = (dispatch) => ({
+  increment: () => dispatch(increment()),
+  decrement: () => dispatch(decrement()),
+  incrementByAmount: (amount) => dispatch(incrementByAmount(amount)),
+  incrementAsync: (amount) => dispatch(incrementAsync(amount)),
+});
 
-// connect 也可以使用 decorator的语法
-// 直接写在组件上
 export default connect(
   mapStateToProps,
-  mapDispatchToProps() // 传入之后通过 props引用变量及方法
+  mapDispatchToProps
 )(CounterClassComponent);
 ```
 
