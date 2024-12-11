@@ -4,7 +4,7 @@ title: antd3 自定义form 组件
 tag: word
 ---
 
-::: tabs
+<!-- ::: tabs
 
 @tab 自定义 table
 
@@ -260,4 +260,4 @@ export default BindTable;
 
 ### 效果
 
-<img src="/assets/work/01.png"/>
+<img src="/assets/work/01.png"/> -->
