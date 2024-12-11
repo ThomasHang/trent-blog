@@ -1,5 +1,5 @@
 ---
-date: 2023-11-17
+date: 2024-12-11
 title: 配置 SSH 长连接
 icon: install
 order: 1
