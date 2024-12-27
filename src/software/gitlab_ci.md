@@ -30,7 +30,7 @@ docker restart
 ## 更新 docker 容器
 
 ```bash
-# 进入groot路径
+# 进入groot 目录
 cd /opt/dockerfile/groot
 # 重新打包
 docker build -t node:groot .
