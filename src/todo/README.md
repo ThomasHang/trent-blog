@@ -26,22 +26,26 @@ javascript
 
 [javascript-guidebook](https://tsejx.github.io/javascript-guidebook/document-object-model)
 
-
 想做的事情:
 
 - [ ] 构建一个画版工具
-
 
 新知识
 
 - view transition API
 
-
 学习新库
+
 - fabric.js
 
 看别人代码
+
 - https://github.com/JJYing/Nurburgring-Map
 
-
 -[英语新闻](https://englishnewsinlevels.com/)
+
+python
+
+- [Python 小项目大全（The Big Book of Small Python Projects (https://inventwithpython.com/bigbookpython/)](https://inventwithpython.com/bigbookpython/)
+
+- [从Python入门到专业之路（Beyond the Basic Stuff with Python (https://inventwithpython.com/beyond/)](https://inventwithpython.com/beyond/)
