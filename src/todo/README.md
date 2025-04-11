@@ -48,6 +48,11 @@ python
 
 - [Python 小项目大全（The Big Book of Small Python Projects (https://inventwithpython.com/bigbookpython/)](https://inventwithpython.com/bigbookpython/)
 
-- [从Python入门到专业之路（Beyond the Basic Stuff with Python (https://inventwithpython.com/beyond/)](https://inventwithpython.com/beyond/)
+- [从Python入门到专业之路（Beyond the Basic Stuff with Python (https://inventwithpython.com/beyond/)](https://inventwithpython.com/beyon
 
+咸鱼卖服务计划
 
+- pdf 文件转格式（已找到免费软件，可提供服务，只帮别人转，规避风险）
+- 视频音频转格式(还在找)
+- 音乐下载（可能有风险）
+- java卖软件，找到一个链接 3300套JAVA毕业设计项目成品源码 (https://pan.quark.cn/s/71ac2784e6bf) 定价5
