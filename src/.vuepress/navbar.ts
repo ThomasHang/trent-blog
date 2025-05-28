@@ -44,19 +44,25 @@ export default navbar([
   {
     text: '随笔',
     icon: 'read',
-    prefix: '/read/',
-    children: [
-      {
-        text: '随笔',
-        icon: 'read',
-        link: '',
-        activeMatch: '^/read/$',
-      },
-    ],
+    link: '/read/',
+    
+    // prefix: '/read/',
+    // children: [
+    //   {
+    //     text: '随笔',
+    //     icon: 'read',
+    //     link: '',
+    //     activeMatch: '^/read/$',
+    //   },
+    // ],
   },
   {
     text: 'todo',
     icon: 'todo',
     link: '/todo/',
+  },
+  {
+    text: '复盘',
+    link: '/financial/',
   },
 ]);
