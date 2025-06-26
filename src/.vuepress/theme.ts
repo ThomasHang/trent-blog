@@ -13,8 +13,6 @@ export default hopeTheme({
   },
   // iconPrefix: "icon-",
 
-  iconAssets: "//at.alicdn.com/t/c/font_4234840_e7drj8n04b6.css",
-
   // logo: "/assets/icon/mine.jpg",
   logo: "/logo.svg",
 
@@ -74,7 +72,40 @@ export default hopeTheme({
   metaLocales: {
     editLink: "在 GitHub 上编辑此页",
   },
-
+  markdown: {
+    align: true,
+    attrs: true,
+    component: true,
+    demo: true,
+    include: true,
+    mark: true,
+    plantuml: true,
+    spoiler: true,
+    stylize: [
+      {
+        matcher: "Recommended",
+        replacer: ({ tag }) => {
+          if (tag === "em")
+            return {
+              tag: "Badge",
+              attrs: { type: "tip" },
+              content: "Recommended",
+            };
+        },
+      },
+    ],
+    imgLazyload: true,
+    imgMark: true,
+    imgSize: true,
+    footnote: true,
+    mermaid: true,
+    revealjs: true,
+    sub: true,
+    sup: true,
+    tabs: true,
+    vPre: true,
+    markmap: true,
+  },
   plugins: {
     blog: true,
 
@@ -87,43 +118,13 @@ export default hopeTheme({
     components: {
       components: ["Badge", "VPCard"],
     },
-    // 此处开启了很多功能用于演示，你应仅保留用到的功能。
-    markdownImage: {
-      figure: true,
-      lazyload: true,
-      size: true,
+
+    icon: {
+      assets: "//at.alicdn.com/t/c/font_4234840_e7drj8n04b6.css",
     },
-    
-    markdownTab: true,
+    // 此处开启了很多功能用于演示，你应仅保留用到的功能。
 
     // all features are enabled for demo, only preserve features you need here
-    mdEnhance: {
-      align: true,
-      attrs: true,
-      component: true,
-      demo: true,
-      include: true,
-      mark: true,
-      plantuml: true,
-      spoiler: true,
-      stylize: [
-        {
-          matcher: "Recommended",
-          replacer: ({ tag }) => {
-            if (tag === "em")
-              return {
-                tag: "Badge",
-                attrs: { type: "tip" },
-                content: "Recommended",
-              };
-          },
-        },
-      ],
-      sub: true,
-      sup: true,
-      tasklist: true,
-      vPre: true,
-    },
 
     // uncomment these if you want a PWA
     // pwa: {
